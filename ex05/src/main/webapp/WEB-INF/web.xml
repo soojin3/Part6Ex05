@@ -29,5 +29,13 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	
+		<multipart-config>
+		<location>c:/upload/temp</location>
+		<max-file-size>20971520 </max-file-size><!-- 20MB=1024byte*1024*20 -->
+		<max-request-size> 41943040</max-request-size><!-- 40MB -->
+		
+	</multipart-config>
+	
 
 </web-app>

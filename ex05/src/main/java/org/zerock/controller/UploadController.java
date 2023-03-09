@@ -1,5 +1,8 @@
 package org.zerock.controller;
 
+import java.io.File;
+import java.io.IOException;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +22,13 @@ public class UploadController {
 			System.out.println("파일이름"+justfile.getOriginalFilename());
 			System.out.println("파일사이즈"+justfile.getSize());
 			System.out.println("파라미터 이름"+justfile.getName());
-			justfile.transferTo(dest);//파일저장
+			File dest = new File("C:/upload",justfile.getOriginalFilename());
+			try {
+				justfile.transferTo(dest);//파일저장
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("파일 저장오류 발생");
+			}
 		}
 		
 	}
